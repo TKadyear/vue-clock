@@ -15,9 +15,15 @@ export default {
   methods: {
     setTime() {
       const date = new Date();
-      this.hours = date.getHours();
-      this.minutes = date.getMinutes();
-      this.seconds = date.getSeconds();
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      let seconds = date.getSeconds();
+      hours = hours <= 9 ? `${hours}`.padStart(2, 0) : hours;
+      minutes = minutes <= 9 ? `${minutes}`.padStart(2, 0) : minutes;
+      seconds = seconds <= 9 ? `${seconds}`.padStart(2, 0) : seconds;
+      this.hours = hours;
+      this.minutes = minutes;
+      this.seconds = seconds;
     }
   }
 }
@@ -39,5 +45,9 @@ export default {
 <style scoped>
 .LCD {
   display: flex;
+}
+.LCD > div {
+  font-family: "alarm clock";
+  font-size: x-large;
 }
 </style>
